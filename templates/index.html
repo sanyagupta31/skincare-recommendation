@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skincare Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>💅 Skincare Recommendation System</h1>
+    <p class="subheading">Welcome to your personal skincare assistant. Feel free to ask anything 💖</p>
+
+    <form id="query-form">
+      <textarea name="query" placeholder="Write freely about your skincare..."></textarea>
+      <button type="submit">💬 Get Advice</button>
+    </form>
+
+    <div id="response-box"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("query-form");
+    const responseBox = document.getElementById("response-box");
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      responseBox.innerHTML = "<p>Thinking... ⏳</p>";
+
+      const formData = new FormData(form);
+      const res = await fetch("/ask", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      responseBox.innerHTML = `<div class="response"><strong>Answer:</strong><p>${data.answer}</p></div>`;
+    };
+  </script>
+</body>
+</html>
