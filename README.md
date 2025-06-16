@@ -48,12 +48,3 @@ python app.py
 
 ```
 
----
-
-Let me know if you want me to:
-- convert this into an actual `README.md` file for you
-- style your product suggestions in the UI using cute fonts
-- help you deploy it with 💖 aesthetic design
-
-Ready to glow? ✨
-```
